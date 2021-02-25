@@ -1,0 +1,29 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "flask",
+    "namespace": "default",
+    "selfLink": "/api/v1/namespaces/default/services/flask",
+    "labels": {
+      "run": "flask"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "protocol": "TCP",
+        "port": 5000,
+        "targetPort": 5000
+      }
+    ],
+    "selector": {
+      "run": "flask"
+    },
+    "type": "ClusterIP",
+    "sessionAffinity": "None"
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+}

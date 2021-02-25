@@ -1,0 +1,9 @@
+Task 3
+
+Steps:
+1. Build docker image for both flask-API and react-app using the Dockerfile from Task 1 and push it in image registry with tags.
+2. Create a deployment.yaml file for deploying pods in Kubernetes on which containers run in which we will specify the replica set and image path for pulling the image.
+3. Create a service.json file that will help expose the deployments running inside the Kubernetes cluster to the outside world, service file will contain the ports on which we are exposing the service and link specifying the deployment.
+4. While creating the service, we can choose different ways of exposing the deployment such as NodePort, ClusterIP, LoadBalancer.
+5. Once we have deployments and services running inside the Kubernetes cluster, we can use Nginx or ingress to route the traffic.
+In the case of AWS, we can have an EBS loadbanacer with defined rules which will route the traffic.

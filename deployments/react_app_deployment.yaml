@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: react
+  labels:
+    app: react
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: react
+  template:
+    metadata:
+      labels:
+        run: react
+    spec:
+      containers:
+      - name: react
+        image: ujjwalvns/react:demo
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

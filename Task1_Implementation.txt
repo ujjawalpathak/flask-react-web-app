@@ -1,0 +1,29 @@
+Task-1 Implementation
+
+This is the detailed documentation for Task 1, which involves creating containers of flask-API and react-app. The flask-API reads the CPU and RAM utilization and react-app serves the result in the browser.
+
+Steps involved :
+1.Creating containers
+2.Preparing a docker-compose file
+
+1.	Creating containers:
+
+a. Flask-API
+b. React-APP
+
+1.a.	Creating Flask-API container
+We will take a python base image with fewer libraries to keep docker-image light and we will add all the libraries required using requirement.txt after copying all the files and setting the working directory path. We will use gunicorn gateway to run the flask-API.
+
+[Here, to the contrary I have taken python3 image due to time constraints on completing this task.]
+
+1.b.	Creating React-app container
+For react-app, we will be using a multistage container, so that the unnecessary files are excluded and the image is very lightweight.
+Here again, we take a base image, which will be alpine Node(lightweight) and we will set the working directory before copying the required files in the directory. Once all the required files are available, we will install npm to download the required libraries, post which we will build the project.
+Once the project is built we can use Nginx proxy to expose the React-app for which we will take the Nginx base image and copy the file obtained post build and copy it in Nginx, HTML file directory and expose the container at port 80.
+
+2.	Preparing docker-compose.yaml:
+
+Docker-compose is a manager for Docker containers, we will be using YAML format for creating docker-compose, we will specify the docker-compose version at the beginning of the file and then we can start specifying all the containers which will be created.
+We can specify the name of the image which we want to provide and the Dockerfile path. Docker-compose has various properties such as providing a volume path for persistent volumes and specifying the ports on which container image will be exposed.
+
+Once the docker-compose.yaml is done, we can run the `docker-compose up --build` command to start the containerization process.

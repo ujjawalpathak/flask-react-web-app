@@ -1,0 +1,13 @@
+Task-2 Implementation
+
+Task 2 is the same as Task 1, just we have to perform it on an instance.
+
+Steps:
+1.Create a VPC, Subnet, Route Table.
+2.Launch an instance in the specified VPC, with the valid subnet and tags.
+3.While launching the instance, we will create a new security group that will have limited inbound rules such as only myIP for SSH(port 22) and keeps 80 open to all. For outbound we can have traffic open to all(0.0.0.0/0).
+4. Apart from this we also need to open all the ports involved in the project such as Port 5000 within the same VPC.
+5. Once we are done with the instance configuration we will have to install docker and docker-compose on the instance.
+6. Then we will copy the files from local to instance either using WinSCP(which I chose) else using the S3 bucket.
+7. Now we are set to launch "docker-compose up --build" after unzipping the file.
+We will have our service available at the publicIP of the instance, to keep this IP static we will allocate an EIP from the amazon pool and associate it with our instance.
